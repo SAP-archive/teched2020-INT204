@@ -1,4 +1,4 @@
-# Exercise 2 - Exercise 2 Description
+# Exercise 2 - Create an IoT Rules to monitor your Deliveries
 
 In this exercise, we will create...
 
