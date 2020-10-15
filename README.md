@@ -22,7 +22,9 @@ Learn how to model delivery insight scenarios in the SAP Internet of Things solu
 - [Exercise 2 - Second Exercise Description](exercises/ex2/)
     - [Exercise 2.1 - Exercise 2 Sub Exercise 1 Description](exercises/ex2#exercise-21-sub-exercise-1-description)
     - [Exercise 2.2 - Exercise 2 Sub Exercise 2 Description](exercises/ex2#exercise-22-sub-exercise-2-description)
-- [Exercise 3 - Create a Dashboard in SAP Analytics Cloud](exercises/ex3/)
+- [Exercise 3 - SAP Analytics Cloud Dashboard](exercises/ex3/)
+    - [Exercise 3.1 - Create a Data Model](/exercises/ex3#exercise-31-create-a-data-model)
+    - [Exercise 3.2 - Create a Dashboard](/exercises/ex3#exercise-32-create-a-dashboard)
 
 
 

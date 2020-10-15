@@ -1,8 +1,8 @@
-# SAP Analytics Cloud Dashboard
+# Exercise 3 - SAP Analytics Cloud Dashboard
 
 In this exercise, you will connect SAP IoT to SAP Analytics Cloud and create a dashboard to show the latest.
 
-## Create a Data Model
+## Exercise 3.1 - Create a Data Model
 
 After completing these steps you will have created a data model in SAC which is ready to be consumed in your dashboard afterwards.
 
@@ -32,7 +32,7 @@ After completing these steps you will have created a data model in SAC which is 
 
 
 
-## Create a Dashboard
+## Exercise 3.2 - Create a Dashboard
 
 After completing these steps you will have a dashboard to monitor the maximum temperature of every delivery with the monitored material.
 
