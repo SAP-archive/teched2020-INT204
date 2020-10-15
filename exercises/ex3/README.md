@@ -34,7 +34,7 @@ After completing these steps you will have created a data model in SAC which is 
 
 ## Exercise 3.2 - Create a Dashboard
 
-After completing these steps you will have a dashboard to monitor the maximum temperature of every delivery with the monitored material.
+After completing these steps you will have a dashboard to monitor the maximum and the average temperature of every delivery with the monitored material.
 
 1.	Click on <b>Create</b> and then select <b>Story</b>
 <br>![](/exercises/ex3/images/createDashboard1.png)
@@ -48,8 +48,18 @@ After completing these steps you will have a dashboard to monitor the maximum te
 4.	In the new pop up window select the model you created before
 
 5.	In the New Document screen, go to <b>Designer</b>
+<br>![](/exercises/ex3/images/createDashboard4.png)
 
+6.	Under Measures click on <b>Add Measure</b>
+<br>![](/exercises/ex3/images/createDashboard5.png)
 
+7.	Under Measures select <b>Create Calculation</b>
+<br>![](/exercises/ex3/images/createDashboard6.png)
+
+8. Calculation Editor is opening. Here select <b>Calculated Measure</b> under <b>Type</b>
+
+9.	Under Edit Formula you can create your own formulas. For example, to calculate Average Temperature please write sum and help text is displayed. Choose the suggested type. Afterwards click on Operators and choose "/". Finally write count and choose the example from the suggested types.
+<br>![](/exercises/ex3/images/createDashboard7.png)
 
 
 ## Summary
