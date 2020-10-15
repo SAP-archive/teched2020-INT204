@@ -50,10 +50,10 @@ After completing these steps you will have a dashboard to monitor the maximum an
 5.	In the New Document screen, go to <b>Designer</b>
 <br>![](/exercises/ex3/images/createDashboard4.png)
 
-6.	Under Measures click on <b>Add Measure</b>
+6.	Under <b>Measures</b> click on <b>Add Measure</b>
 <br>![](/exercises/ex3/images/createDashboard5.png)
 
-7.	Under Measures select <b>Create Calculation</b>
+7.	Under <b>Measures</b> select <b>Create Calculation</b>
 <br>![](/exercises/ex3/images/createDashboard6.png)
 
 8. Calculation Editor is opening. Here select <b>Calculated Measure</b> under <b>Type</b>
@@ -61,8 +61,12 @@ After completing these steps you will have a dashboard to monitor the maximum an
 9.	Under Edit Formula you can create your own formulas. For example, to calculate Average Temperature please write sum and help text is displayed. Choose the suggested type. Afterwards click on Operators and choose "/". Finally write count and choose the example from the suggested types.
 <br>![](/exercises/ex3/images/createDashboard7.png)
 
+10.	Under <b>Measures</b> select <b>TEMPERATUREMAX</b>
+
+11. Under <b>Dimension</b> select <b>DELIVERYID</b>
+
+12. The chart shows now the average as well as the maximum temperature of your deliveries
 
 ## Summary
 
-Now that you have ... 
-Continue to - [Exercise 1 - Exercise 1 Description](../ex1/README.md)
+Now you have created a dashboard using SAP Analytics Cloud to visualize the maximum and the average measured temperature of your deliveries.

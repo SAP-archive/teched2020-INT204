@@ -1,6 +1,6 @@
 # Exercise 1 - Exercise 1 Description
 
-In this exercise, we will create...
+In this exercise, we will explore the so called Thing Model. In Delivery Insights enabled by SAP IoT we want to monitor certain 
 
 ## Exercise 1.1 Sub Exercise 1 Description
 
