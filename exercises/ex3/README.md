@@ -131,4 +131,4 @@ node simulator.js
 
 Now you are able to send data to SAP IoT. You can now simulate some temperature values. If you send a value above your threshold it will raise an alert in S/4HANA. This will be shown during the session
 
-Now you can continue and create a Dashboard to visualize some of your IoT Data in SAC - [Exercise 3 - Excercise 3 ](../ex3/README.md)
+Now you can continue and create a Dashboard to visualize some of your IoT Data in SAC - [Exercise 4 - SAP Analytics Cloud Dashboard](../ex4/README.md)
