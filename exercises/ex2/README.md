@@ -99,4 +99,4 @@ After completing these steps you will have created an integration into S/4HANA s
 
 You've now created a streaming rule on your IoT data. 
 
-Continue to send Data into SAP IoT - [Exercise 3 - Excercise 3 ](../ex3/README.md)
+Continue to send Data into SAP IoT - [Exercise 3 - Send Data to SAP IoT](../ex3/README.md)
