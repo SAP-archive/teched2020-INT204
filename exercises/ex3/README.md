@@ -1,72 +1,134 @@
-# Exercise 3 - SAP Analytics Cloud Dashboard
+# Exercise 3 - Send Data to SAP IoT
 
-In this exercise, you will connect SAP IoT to SAP Analytics Cloud and create a dashboard to show the latest.
+In this exercise you will send data to SAP IoT to simulate your handling unit sensors.
 
-## Exercise 3.1 - Create a Data Model
+## Exercise 3.1 - Download your certificate
 
-After completing these steps you will have created a data model in SAC which is ready to be consumed in your dashboard afterwards.
+After completing these steps you will have a basic understanding how SAP IoT APIs work. We will use the APIs to downloaded a certificate which allows you to ingest data to SAP IoT.
 
-1.	Start SAP Analytics Cloud using the provided link and log in.
+1.	Go to the <b>Thing Modeler</b> application in you Fiori Launchpad
+<br>![](/exercises/ex1/images/tm1.png)
 
-2. Click on <b>Create</b> and then select <b>Model</b>
-<br>![](/exercises/ex3/images/createModel1.png)
+2. In the upper left corner of the Thing Modeler App you can select your package. Therefore search for your number which was provided to you earlier and click on the package.
+<br>![](/exercises/ex1/images/tm2.png)
 
-3.	In the new screen, select <b>Get Data from a data source</b>
-<br>![](/exercises/ex3/images/createModel2.png)
+3. Select your <b>Thing</b> in the <b>Things</b> tab.
 
-4. At top right under <b>Connect to live data</b>, click <b>Live Data connection</b>
-<br>![](/exercises/ex3/images/createModel3.png)
+4. Under <b>Basic Data</b> you will find <b>S4_References</b> with a <b>HU_ID</b>. Copy the value. 
+<br>![](/exercises/ex3/images/cert1.png)
+
+5. Navigate back to your Fiori Launchpad
+
+6. Now we will start introducing the SAP IoT APIs to you. Therefore open the <b>Device Connectivity</b> app.
+<br>![](/exercises/ex3/images/cert2.png)
+
+7. Go to <b>GET /devices</b> and click <b>Try it out</b>.
+<br>![](/exercises/ex3/images/cert3.png)
+
+8. We will now search for our device. Therefore enter the following code into the <b>filter</b> field and click on <b>Execute</b>.
+```
+alternateId eq '<the HU_ID you copied>'
+```
+<br>![](/exercises/ex3/images/cert4.png)
+
+9. In the <b>Responses</b> area copy the <b>id</b> of your device.
+<br>![](/exercises/ex3/images/cert5.png)
+
+10. Now go to the certificate API: <b>/devices/{deviceId}/authentications/clientCertificate/pem</b>
+
+11. Enter the <b>deviceId</b> you just copied and click <b>Execute</b>.
+<br>![](/exercises/ex3/images/cert6.png)
+
+12. In the <b>Response</b> are click on <b>Download</b> to download a JSON file.
+<br>![](/exercises/ex3/images/cert7.png)
 
 
-5.	In the popup window, select <b>SAP HANA</b> for System Type, <b>TrainingEU</b> for Connection and <b>VaccineModelXX</b> (XX stands for your Group Number) as Data Source
+## Exercise 3.2 - Create a Node.js Script to simulate IoT Data
 
-6.	Click on <b>OK</b>
-<br>![](/exercises/ex3/images/createModel4.png)
+After completing these steps you will be able to send data to SAP IoT.
 
-7.	New model screen is displayed listing all the generated / configured aggregates.
-8.	Click <b>Save</b>
-<br>![](/exercises/ex3/images/createModel5.png)
+1. Create a new folder.
 
-9.	Save it as <b>NewModelXX</b> and click on <b>OK</b>
-<br>![](/exercises/ex3/images/createModel6.png)
+2. Copy the file you just downloaded and rename it to <b>cert.json</b>
 
+3. Create a file called <b>simulator.js</b>.
 
+4. First we will add some configuration to the <b>simulator.js</b>:
+```javascript
+const mqtt = require('mqtt');
+const fs = require('fs');
+const readline = require('readline');
+const host = '87721cbe-9e5e-4a18-bdfb-ec6cf2657b42.us10.cp.iot.sap';
+const huId = <yourHU_ID>;
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+```
 
-## Exercise 3.2 - Create a Dashboard
+5. Next step is to read the certificate:
+```javascript
+const cert = JSON.parse(fs.readFileSync('./cert.json'));
+```
 
-After completing these steps you will have a dashboard to monitor the maximum and the average temperature of every delivery with the monitored material.
+6. With the certificate we can now create a MQTT connection:
+```javascript
+const options = {
+  key: cert.pem,
+  cert: cert.pem,
+  rejectUnauthorized: true,
+  passphrase: cert.secret
+};
+var client = mqtt.connect("mqtts://" + host + "?clientId=" + huId, options);
+```
 
-1.	Click on <b>Create</b> and then select <b>Story</b>
-<br>![](/exercises/ex3/images/createDashboard1.png)
+7. Now we will add an error handler and a handler for successful connections:
+```javascript
+client.on('error', function (e) {
+  console.error(e);
+});
 
-2.	In the next window click on <b>Add a Canvas Package</b>
-<br>![](/exercises/ex3/images/createDashboard2.png)
+client.on('connect', function () {
+  console.log('Connected');
+  sendMessage();
+});
+```
 
-3.	From the new story Canvas Page select <b>Chart</b>
-<br>![](/exercises/ex3/images/createDashboard3.png)
+8. Last we will create a simple user interface to enter temperature values and send them SAP IoT
+```javascript
+function sendMessage(){
+  rl.question('Enter a temperature value ', (answer) => {
+    if(!isNaN(answer)){
+      var payload = {
+        "sensorAlternateId": huId, "capabilityAlternateId": "Handling_Unit_Condition", "measures": [
+          {
+            "temp": answer
+          }
+        ]
+      };
+      client.publish(`measures/${huId}`, JSON.stringify(payload));
+      sendMessage();
+    } else {
+      console.log('Please enter a number');
+      sendMessage();
+    }
+  });
+}
+```
 
-4.	In the new pop up window select the model you created before
+9. Open a terminal in your current directory and install the node package 'mqtt':
+```
+npm install mqtt
+```
 
-5.	In the New Document screen, go to <b>Designer</b>
-<br>![](/exercises/ex3/images/createDashboard4.png)
+10. Now you are ready to run your simulator:
+```
+node simulator.js
+```
 
-6.	Under <b>Measures</b> click on <b>Add Measure</b>
-<br>![](/exercises/ex3/images/createDashboard5.png)
-
-7.	Under <b>Measures</b> select <b>Create Calculation</b>
-<br>![](/exercises/ex3/images/createDashboard6.png)
-
-8. Calculation Editor is opening. Here select <b>Calculated Measure</b> under <b>Type</b>
-
-9.	Under Edit Formula you can create your own formulas. For example, to calculate Average Temperature please write sum and help text is displayed. Choose the suggested type. Afterwards click on Operators and choose "/". Finally write count and choose the example from the suggested types.
-<br>![](/exercises/ex3/images/createDashboard7.png)
-
-10.	Under <b>Measures</b> select <b>TEMPERATUREMAX</b>
-
-11. Under <b>Dimension</b> select <b>DELIVERYID</b>
-
-12. The chart shows now the average as well as the maximum temperature of your deliveries
 
 ## Summary
 
-Now you have created a dashboard using SAP Analytics Cloud to visualize the maximum and the average measured temperature of your deliveries.
+Now you are able to send data to SAP IoT. You can now simulate some temperature values. If you send a value above your threshold it will raise an alert in S/4HANA. This will be shown during the session
+
+Now you can continue and create a Dashboard to visualize some of your IoT Data in SAC - [Exercise 3 - Excercise 3 ](../ex3/README.md)
