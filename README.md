@@ -15,7 +15,7 @@ Learn how to model delivery insight scenarios in the SAP Internet of Things solu
 
 ## Exercises
 
-- [Introduction](exercises/ex0/introduction.pdf)
+- [Introduction](INT204.pdf)
 - [Exercise 1 - Explore the Thing Model](exercises/ex1/)
 - [Exercise 2 - Create an IoT Rules to monitor your Deliveries](exercises/ex2/)
     - [Exercise 2.1 - Create a Rule Context](exercises/ex2#exercise-21-sub-exercise-1-description)
