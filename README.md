@@ -11,7 +11,7 @@ Learn how to model delivery insight scenarios in the SAP Internet of Things solu
 ## Requirements
 
 - You have received a user to access all requiered systems. The user will be provided before the session to you.
-- You have installed [node.js](https://nodejs.org/en/) an [npm](https://www.npmjs.com/get-npm).
+- You have installed [node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/get-npm).
 
 ## Exercises
 
