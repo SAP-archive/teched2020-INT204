@@ -2,7 +2,7 @@ const mqtt = require('mqtt');
 const fs = require('fs');
 const readline = require('readline');
 const host = '87721cbe-9e5e-4a18-bdfb-ec6cf2657b42.us10.cp.iot.sap';
-const huId = '1000000280';
+const huId = 'hu00';
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout

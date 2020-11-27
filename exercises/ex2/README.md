@@ -15,11 +15,11 @@ After completing these steps you will have created a rule context which can be u
 4.	Enter any <b>Short Text</b> and <b>Description</b>
 <br>![](/exercises/ex2/images/rc2.png)
 
-5.	Click <b>Add</b> to add a new property set under the tab <b>Vocabulary</b>
+5.	Click <b>Add</b> to add a new property set under the tab <b>Property Set-based</b>
 <br>![](/exercises/ex2/images/rc3.png)
 
 6. In the dialog, select your Package and your Thing Type. Select the measurement property set which is displayed and click <b>OK</b>. 
-7. Click <b>Save</b>
+7. Click <b>Save and Continue</b>
 <br>![](/exercises/ex2/images/rc4.png)
 
 
@@ -33,14 +33,16 @@ After completing these steps you will have created a rule running on data which 
 <br>![](/exercises/ex2/images/ru1.png)
 
 3. Enter a <b>Rule Name</b>, a <b>Short Text</b> and a <b>Description</b>
-4. CLick on <b>Confirm</b>
+
+4. In the <b>Input and Output</b> tab select your Rule Context as <b>Input</b>
+
+5. CLick on <b>Confirm</b>
 <br>![](/exercises/ex2/images/ru2.png)
 
-5. In the <b>Input and Output</b> tab select your Rule Context as <b>Input</b>
 
-6. In the <b>Rule Editor</b> enter an <b>If</b> Statement to compare the measured temperature with your threshold. Use <b>Ctrl+Space</b> in the rule input field to get a value help.
+6. In the <b>Rule Editor</b> enter an <b>If</b> Statement to compare the measured temperature with your threshold. Use <b>Ctrl+Space</b> in the rule input field to get a value help. The result should look like:
 ```
-Vaccine_Example_status.temperature > 15
+Handling_Unit_Condition.temperature > Handling_Unit_Condition_Generi91427.maxTemp 
 ```
 
 7. Click on <b>Activate</b> to activate your rule
@@ -68,31 +70,22 @@ After completing these steps you will have created an integration into S/4HANA s
 8. Select the <b>E5Z_Sandbox Destination<b>
 <br>![](/exercises/ex2/images/ac2.png)
 
-9. Enter the following code in the <b>Request body</b>
+9. Enter the following JSON in the <b>Request body</b>
 ```json
 {
 	"alias": "IOT_S4_SIT_SO",
-	"guid": "${RecommendationServiceGuid}",
+	"guid": "123456789",
 	"data": {
 		"device": {
 			"customerid": "${S4_References.CUSTOMERID}",
-			"customer_name": "${S4_References.CUSTOMER_NAME}",
-			"material": "${S4_References.MATERIAL}",
-			"material_description": "${S4_References.MATERIAL_DESCRIPTION}",
-			"delivery": "${S4_References.DELIVERY}",
-			"delivery_item": "${S4_References.DELIVERY_ITEM}",
-			"hu_id": "${S4_References.HU_ID}",
 			"salesorder": "${S4_References.SALESORDER}",
 			"salesorderitem": "${S4_References.SALESORDERITEM}",
-			"salesorderitemuniqueid": "${S4_References.SALESORDERITEMUNIQUEID}",
-			"actualvalue": "${Handling_Unit_Condition.Acceleration}",
-			"thresholdvalue": "${S4_References.THRESHOLDVALUE}",
-			"sensorunit": "${S4_References.SENSORUNIT}"
+			"thresholdvalue": "${Handling_Unit_Condition.Generi91427.maxTemp}",
+      "actualvalue": "${Handling_Unit_Condition.temperature}"
 		}
 	}
 }
 ```
-
 
 
 ## Summary
