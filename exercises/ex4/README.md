@@ -61,11 +61,13 @@ After completing these steps you will have a dashboard to monitor the maximum an
 9.	Under Edit Formula you can create your own formulas. For example, to calculate Average Temperature please write sum and help text is displayed. Choose the suggested type. Afterwards click on Operators and choose "/". Finally write count and choose the example from the suggested types.
 <br>![](/exercises/ex4/images/createDashboard7.png)
 
-10.	Under <b>Measures</b> select <b>TEMPERATUREMAX</b>
+10.	Click <b>OK</b>
 
-11. Under <b>Dimension</b> select <b>DELIVERYID</b>
+11.	Under <b>Measures</b> select <b>TEMPERATURE_MAX</b>
 
-12. The chart shows now the average as well as the maximum temperature of your deliveries
+12. Under <b>Dimension</b> select <b>SALES_ORDER</b>
+
+13. The chart shows now the average as well as the maximum temperature of your deliveries
 
 ## Summary
 

@@ -14,7 +14,7 @@ After completing these steps you will have a basic understanding how SAP IoT API
 
 3. Select your <b>Thing</b> in the <b>Things</b> tab.
 
-4. Under <b>Basic Data</b> you will find <b>S4_References</b> with a <b>HU_ID</b>. Copy the value. 
+4. Under <b>Basic Data</b> you will find <b>S4_References</b> with a <b>HANDLINGUNIT</b>. Copy the value. 
 <br>![](/exercises/ex3/images/cert1.png)
 
 5. Navigate back to your Fiori Launchpad
@@ -34,7 +34,7 @@ alternateId eq '<the HU_ID you copied>'
 9. In the <b>Responses</b> area copy the <b>id</b> of your device.
 <br>![](/exercises/ex3/images/cert5.png)
 
-10. Now go to the certificate API: <b>/devices/{deviceId}/authentications/clientCertificate/pem</b>
+10. Now go to the certificate <b>GET</b> API: <b>/v1/devices/{deviceId}/authentications/clientCertificate/pem</b>
 
 11. Enter the <b>deviceId</b> you just copied and click <b>Execute</b>.
 <br>![](/exercises/ex3/images/cert6.png)
@@ -47,19 +47,19 @@ alternateId eq '<the HU_ID you copied>'
 
 After completing these steps you will be able to send data to SAP IoT.
 
-1. Create a new folder.
+1. Create a new folder in your local file system
 
-2. Copy the file you just downloaded and rename it to <b>cert.json</b>
+2. Copy the file you just downloaded to the newly created folder and rename it to <b>cert.json</b>
 
 3. Create a file called <b>simulator.js</b>.
 
-4. First we will add some configuration to the <b>simulator.js</b>:
+4. First we will add some configuration to the <b>simulator.js</b>. Please adjust your <b>huId</b>:
 ```javascript
 const mqtt = require('mqtt');
 const fs = require('fs');
 const readline = require('readline');
 const host = '87721cbe-9e5e-4a18-bdfb-ec6cf2657b42.us10.cp.iot.sap';
-const huId = <yourHU_ID>;
+const huId = '<yourHU_ID>';
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -125,6 +125,8 @@ npm install mqtt
 ```
 node simulator.js
 ```
+
+11. Navigate back to the <b>Thing Modeler</b> app. Select your <b>Thing</b> and navigate to <b>Measured Values</b>, you should see the values you've ingested.
 
 
 ## Summary
