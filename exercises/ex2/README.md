@@ -82,8 +82,8 @@ After completing these steps you will have created an integration into S/4HANA s
 			"customerid": "${S4_References.CUSTOMERID}",
 			"salesorder": "${S4_References.SALESORDER}",
 			"salesorderitem": "${S4_References.SALESORDERITEM}",
-		  "thresholdvalue": "${Handling_Unit_Condition.Generi91427.maxTemp}",
-      "actualvalue": "${Handling_Unit_Condition.temperature}"
+			"thresholdvalue": "${Handling_Unit_Condition.Generi91427.maxTemp}",
+      			"actualvalue": "${Handling_Unit_Condition.temperature}"
 		}
 	}
 }
