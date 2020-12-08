@@ -24,7 +24,7 @@ Learn how to model delivery insight scenarios in the SAP Internet of Things solu
     - [Exercise 3.1 - Download your certificate](exercises/ex3#exercise-31---download-your-certificate)
     - [Exercise 3.2 - Create a Node.js Script to simulate IoT Data](exercises/ex3#exercise-32---create-a-nodejs-script-to-simulate-iot-data)
 - [Exercise 4 - SAP Analytics Cloud Dashboard](exercises/ex4/)
-    - [Exercise 4.1 - Create a Dashboard](/exercises/ex3#exercise-41---create-a-dashboard)
+    - [Exercise 4.1 - Create a Dashboard](/exercises/ex4#exercise-41---create-a-dashboard)
 
 
 ## How to obtain support
